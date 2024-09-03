@@ -55,6 +55,9 @@
     <ClCompile Include="Source\Windows\MainWindow.cpp">
       <Filter>Source\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Windows\SideWindow.cpp">
+      <Filter>Source\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\ImGui\imconfig.h">
@@ -101,6 +104,12 @@
     </ClInclude>
     <ClInclude Include="Source\Windows\MainWindow.h">
       <Filter>Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Windows\SideWindow.h">
+      <Filter>Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\define.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

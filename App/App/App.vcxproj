@@ -207,6 +207,7 @@
     <ClCompile Include="Source\Style.cpp" />
     <ClCompile Include="Source\Windows\LoginWindow.cpp" />
     <ClCompile Include="Source\Windows\MainWindow.cpp" />
+    <ClCompile Include="Source\Windows\SideWindow.cpp" />
     <ClCompile Include="Source\Windows\WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -218,11 +219,13 @@
     <ClInclude Include="Library\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Library\ImGui\imstb_textedit.h" />
     <ClInclude Include="Library\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Source\define.h" />
     <ClInclude Include="Source\Global.h" />
     <ClInclude Include="Source\Manager.h" />
     <ClInclude Include="Source\Render.h" />
     <ClInclude Include="Source\Style.h" />
     <ClInclude Include="Source\Windows\MainWindow.h" />
+    <ClInclude Include="Source\Windows\SideWindow.h" />
     <ClInclude Include="Source\Windows\WindowBase.h" />
     <ClInclude Include="Source\Windows\LoginWindow.h" />
   </ItemGroup>

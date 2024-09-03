@@ -2,7 +2,7 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new LoginWindow();
+    Data::CurrentWindow = new MainWindow();
 }
 
 void Manager::SetNextSize(const float width, const float height)

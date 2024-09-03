@@ -12,9 +12,12 @@
 #include "Style.h"
 #include "Windows/WindowBase.h"
 #include "Manager.h"
+#include "define.h"
 
 #include "Windows/LoginWindow.h"
 #include "Windows/MainWindow.h"
+#include "Windows/SideWindow.h"
+
 
 namespace Global
 {
