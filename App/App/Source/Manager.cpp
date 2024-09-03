@@ -2,7 +2,7 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new MainWindow();
+    Data::CurrentWindow = new SideWindow();
 }
 
 void Manager::SetNextSize(const float width, const float height)
