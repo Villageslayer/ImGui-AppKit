@@ -205,6 +205,7 @@
     <ClCompile Include="Source\Manager.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Style.cpp" />
+    <ClCompile Include="Source\Widgets\Widgets.cpp" />
     <ClCompile Include="Source\Windows\LoginWindow.cpp" />
     <ClCompile Include="Source\Windows\MainWindow.cpp" />
     <ClCompile Include="Source\Windows\SideWindow.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="Source\Manager.h" />
     <ClInclude Include="Source\Render.h" />
     <ClInclude Include="Source\Style.h" />
+    <ClInclude Include="Source\Widgets\Widgets.h" />
     <ClInclude Include="Source\Windows\MainWindow.h" />
     <ClInclude Include="Source\Windows\SideWindow.h" />
     <ClInclude Include="Source\Windows\WindowBase.h" />

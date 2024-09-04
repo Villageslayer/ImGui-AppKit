@@ -1,4 +1,5 @@
 ﻿#include "../Global.h"
+#include "../Widgets/Widgets.h"
 
 
 namespace Menu{
@@ -38,28 +39,10 @@ void off() {
 }
 
 void navBar(auto buttonWidth) {
-
-    // Navigation bar
-
-    // LogIn button
-    if (ImGui::Button("LogIn", ImVec2(buttonWidth, 0.0f)))
-    {
-        Manager::ClearWindow();
-        auto* nextWindow = new LoginWindow();
-        Manager::SwitchWindow(nextWindow);
-    }
+	
+    Widgets::Nav::Side(buttonWidth);
     ImGui::SameLine();
-
-    // Side button
-    if (ImGui::Button("Side", ImVec2(buttonWidth, 0.0f)))
-    {
-        Manager::ClearWindow();
-        Manager::SetNextSize(300.0f, 300.0f);
-        auto* nextWindow = new SideWindow();
-        Manager::SwitchWindow(nextWindow);
-    }
-
-
+    Widgets::Nav::Login(buttonWidth);
     ImGui::Separator();
 
 }
@@ -172,14 +155,8 @@ void MainWindow::Render()
     }
     ECHILD; //Content
     ECHILD; //BODY
-    
+	Widgets::Deco::Footer();
 	//Footer    
 	
-	SEPARATOR;
-    //Footer
-    ImGui::Text("build on:");
-    ImGui::SameLine();
-    ImGui::Text(__DATE__);
-    ImGui::SameLine();
-    ImGui::Text(__TIME__);
+	
 }
