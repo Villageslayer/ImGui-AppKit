@@ -1,6 +1,6 @@
 #include "../Global.h"
 
-namespace Menu
+namespace Nav
 {
 	int currentTab = 1;
 }
@@ -19,27 +19,27 @@ void menubar() {
 
 	if (BUTTON("Menu1"))
 	{
-		Menu::currentTab = 1;
+		Nav::currentTab = 1;
 	}
 	SAMELINE
 	if (BUTTON("Menu2"))
 	{
-		Menu::currentTab = 2;
+		Nav::currentTab = 2;
 	}
 	SAMELINE
 	if (BUTTON("Menu3"))
 	{
-		Menu::currentTab = 3;
+		Nav::currentTab = 3;
 	}
 	SAMELINE
-	if (BUTTON("Menu3"))
+	if (BUTTON("Menu4"))
 		{
-			Menu::currentTab = 4;
+			Nav::currentTab = 4;
 		}
 	SAMELINE
-	if (BUTTON("Menu3"))
+	if (BUTTON("Menu5"))
 		{
-			Menu::currentTab = 5;
+			Nav::currentTab = 5;
 		}
 
 }

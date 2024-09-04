@@ -26,13 +26,13 @@ void Manager::Render()
     const ImVec2 windowSize = { Data::NextSizeX, Data::NextSizeY };
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos({ GetSystemMetrics(SM_CXSCREEN) / 2 - windowSize.x / 2, GetSystemMetrics(SM_CYSCREEN) / 2 - windowSize.y / 2 }, ImGuiCond_FirstUseEver);
-    ImGui::SetNextWindowBgAlpha(1.0f);
+    ImGui::SetNextWindowBgAlpha(0.5f);
 
-    constexpr ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
+    constexpr ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoSavedSettings  | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
     static bool draw = true;
     ImGui::Begin("  ", &draw, windowFlags);
 
-    Data::CurrentWindow->Render();
+    Data::CurrentWindow->Render();;
 
     ImGui::End();
 

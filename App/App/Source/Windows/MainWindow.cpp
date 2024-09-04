@@ -1,22 +1,46 @@
 ﻿#include "../Global.h"
 
-namespace toggle
-{
-    int menuTab = 1;
-	bool isActive = false;
+
+namespace Menu{
+
+	int currentTab = 1;
+
+    void tooltip(const char* text) {
+        auto tooltipText = text;
+        if (ImGui::IsItemHovered())
+        {
+            ImGui::BeginTooltip();
+            ImGui::Text(tooltipText);
+            ImGui::EndTooltip();
+        }
+    }
+}
+namespace Features{
+	namespace Aim {
+		char text[4] = "Aim";
+		bool isActive = false;
+	}
+	namespace ESP {
+		char text[4] = "ESP";
+		bool isActive = false;
+	}
+    namespace Misc {
+		char text[5] = "Misc";
+        bool isActive = false;
+    }
+}
+namespace sizing {
+
 }
 
-void MainWindow::Render()
-{
-    
-    Manager::SetNextSize(500.0f, 300.0f);
-    auto numButtons = 2.0f;
-    auto numChildren = 2.0f;
-    auto itemSpacing = ImGui::GetStyle().ItemSpacing.x;
-    const ImVec2 windowSize = ImGui::GetWindowSize();
-    float buttonWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numButtons) - ImGui::GetStyle().ItemSpacing.x;
-    float childWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numChildren) - ImGui::GetStyle().ItemSpacing.x;
+void off() {
+    TXT("Feature is OFF");
+}
+
+void navBar(auto buttonWidth) {
+
     // Navigation bar
+
     // LogIn button
     if (ImGui::Button("LogIn", ImVec2(buttonWidth, 0.0f)))
     {
@@ -25,6 +49,7 @@ void MainWindow::Render()
         Manager::SwitchWindow(nextWindow);
     }
     ImGui::SameLine();
+
     // Side button
     if (ImGui::Button("Side", ImVec2(buttonWidth, 0.0f)))
     {
@@ -36,69 +61,120 @@ void MainWindow::Render()
 
 
     ImGui::Separator();
-    // Body of the window
-    BCHILD("##BODY", ImVec2((childWidth + itemSpacing) * numChildren, 200), false, ImGuiWindowFlags_NoMove);
-    //Left side of the window
-    BCHILD("##CONTENT", ImVec2(childWidth * 0.75, 200), true);
 
-    if (BUTTON("Menu1"))
+}
+
+void menu(auto childWidth,auto itemSpacing){
+	// Menu COlUMN
+    BCHILD("##Menu", ImVec2(childWidth, 200), true);
+
+    if (BUTTON(Features::Aim::text, ImVec2(childWidth - itemSpacing * 2, 0.0f)))
     {
-        toggle::menuTab = 1;
+        Menu::currentTab = 1;
     }
-	if (ImGui::Button("Menu2"))
-	{
-		toggle::menuTab = 2;
-	}
-	if (BUTTON("Menu3"))
-	{
-		toggle::menuTab = 3;
-	}
+    Menu::tooltip("Does yours suck?");
+    if (ImGui::Button(Features::ESP::text, ImVec2(childWidth - itemSpacing * 2, 0.0f)))
+    {
+        Menu::currentTab = 2;
+    }
+    Menu::tooltip("OH look an enemy");
+    if (BUTTON(Features::Misc::text, ImVec2(childWidth - itemSpacing * 2, 0.0f)))
+    {
+        Menu::currentTab = 3;
+    }
+    Menu::tooltip(Features::Misc::text);
+    ECHILD; //Menu
 
-    ECHILD;
+}
+
+
+void MainWindow::Render()
+{
+    
+    Manager::SetNextSize(500.0f, 300.0f);
+    auto numButtons = 2.0f;
+    auto numChildren = 3.0f;
+    auto itemSpacing = ImGui::GetStyle().ItemSpacing.x;
+    const ImVec2 windowSize = ImGui::GetWindowSize();
+    float buttonWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numButtons) - ImGui::GetStyle().ItemSpacing.x;
+    float childWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numChildren) - ImGui::GetStyle().ItemSpacing.x;
+	
+	navBar(buttonWidth);
+    
+    // Body of the window
+    BCHILD("##BODY", ImVec2((childWidth + itemSpacing*2) * numChildren, 200), false, ImGuiWindowFlags_NoMove);
+    //Left side of the window
+	menu(childWidth, itemSpacing);
 
     //Right side of the window
     SAMELINE;
 
-    BCHILD("##CONTENT2", ImVec2(childWidth * 1.25, 200), true);
-    switch (toggle::menuTab)
+    BCHILD("##CONTENT", ImVec2(childWidth * 2, 200), true);
+    
+    switch (Menu::currentTab)
     {
+		// Aim Feature
     case 1:
-        
-        if (ImGui::Checkbox("Toggle Me", &toggle::isActive)) {
+		//Header For Feature 1
+        if (ImGui::Checkbox(Features::Aim::text, &Features::Aim::isActive)) {
             // Do something when the checkbox is toggled
         }
-        if (toggle::isActive) {
-            ImGui::SameLine();
+        SEPARATOR
+			//Settings for Feature 1
+        if (Features::Aim::isActive) {
+            
             ImGui::Text("I'm active");
         }
         else {
-            SAMELINE
-            ImGui::Text("I'm not active");
+            // text if OFF
+            off();
         }
 		break;
         
+
+		// ESP Feature
     case 2:
-        
-        if (ImGui::Checkbox("MENN", &toggle::isActive)) {
+        //Header For Feature 2
+        if (ImGui::Checkbox(Features::ESP::text, &Features::ESP::isActive)) {
 
         }
-
-        if (toggle::isActive) {
-            ImGui::SameLine();
+        SEPARATOR
+        
+			// settings for Feature 2
+        if (Features::ESP::isActive) {
+            
             ImGui::Text("I'm active");
         }
         else {
-            SAMELINE
-                ImGui::Text("I'm not active");
+            // text if OFF
+            off();
         }
         break;
-        
-    }
-    ECHILD;
-   
     
-   
-	ECHILD; //BODY
+
+		// Misc Feature
+	case 3:
+		//Header For Feature 3
+        if (ImGui::Checkbox(Features::Misc::text, &Features::Misc::isActive)) {
+            // Do something when the checkbox is toggled
+        }
+        SEPARATOR
+			//Settings for Feature 3
+		if (Features::Misc::isActive) {
+            BUTTON("Aim", ImVec2(buttonWidth / 2, 0.0f));
+			
+		}
+        // text if OFF
+		else {
+			
+            off();
+		}
+    }
+    ECHILD; //Content
+    ECHILD; //BODY
+    
+	//Footer    
+	
 	SEPARATOR;
     //Footer
     ImGui::Text("build on:");
