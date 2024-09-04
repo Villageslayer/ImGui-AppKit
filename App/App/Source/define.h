@@ -14,3 +14,9 @@
 
 #define COlUMNS ImGui::Columns
 #define NEXTCOLUMN ImGui::NextColumn();
+
+#define BMENUBAR ImGui::BeginMenuBar
+#define EMENUBAR ImGui::EndMenuBar();
+
+#define BMENU ImGui::BeginMenu
+#define EMENU ImGui::EndMenu();

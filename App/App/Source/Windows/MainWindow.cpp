@@ -38,14 +38,7 @@ void off() {
     TXT("Feature is OFF");
 }
 
-void navBar(auto buttonWidth) {
-	
-    Widgets::Nav::Side(buttonWidth);
-    ImGui::SameLine();
-    Widgets::Nav::Login(buttonWidth);
-    ImGui::Separator();
 
-}
 
 void menu(auto childWidth,auto itemSpacing){
 	// Menu COlUMN
@@ -75,6 +68,8 @@ void MainWindow::Render()
 {
     
     Manager::SetNextSize(500.0f, 300.0f);
+    Manager::SetNextFlags(0);
+    Manager::SetNextTitle("Why aM i doing this?");
     auto numButtons = 2.0f;
     auto numChildren = 3.0f;
     auto itemSpacing = ImGui::GetStyle().ItemSpacing.x;
@@ -82,8 +77,11 @@ void MainWindow::Render()
     float buttonWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numButtons) - ImGui::GetStyle().ItemSpacing.x;
     float childWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numChildren) - ImGui::GetStyle().ItemSpacing.x;
 	
-	navBar(buttonWidth);
-    
+	BCHILD("##HEADER", ImVec2(windowSize.x, 25), false, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+    Widgets::Nav::Buttons::Side(buttonWidth);
+	SAMELINE;
+    Widgets::Nav::Buttons::Login(buttonWidth);
+	ECHILD; //HEADER
     // Body of the window
     BCHILD("##BODY", ImVec2((childWidth + itemSpacing*2) * numChildren, 200), false, ImGuiWindowFlags_NoMove);
     //Left side of the window

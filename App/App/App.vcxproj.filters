@@ -17,6 +17,9 @@
     <Filter Include="Source\Widgets">
       <UniqueIdentifier>{9e409eb1-f711-499b-a54c-ae84a58bc838}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Config">
+      <UniqueIdentifier>{71fc1ccd-62d9-4937-a1b5-44760b0354d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Entry.cpp">

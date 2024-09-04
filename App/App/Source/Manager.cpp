@@ -2,13 +2,21 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new SideWindow();
+    Data::CurrentWindow = new MainWindow();
 }
 
 void Manager::SetNextSize(const float width, const float height)
 {
     Data::NextSizeX = width;
     Data::NextSizeY = height;
+}
+void Manager::SetNextFlags(ImGuiWindowFlags NextFlags)
+{
+    Data::NextWindowFlags = NextFlags;
+}
+void Manager::SetNextTitle(std::string title) 
+{
+    Data::NextTitle = title;
 }
 
 void Manager::ClearWindow()
@@ -27,10 +35,10 @@ void Manager::Render()
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos({ GetSystemMetrics(SM_CXSCREEN) / 2 - windowSize.x / 2, GetSystemMetrics(SM_CYSCREEN) / 2 - windowSize.y / 2 }, ImGuiCond_FirstUseEver);
     ImGui::SetNextWindowBgAlpha(0.5f);
-
-    constexpr ImGuiWindowFlags windowFlags = ImGuiWindowFlags_NoSavedSettings  | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
+    
+    ImGuiWindowFlags windowFlags = Data::DefaultWindowFlags | Data::NextWindowFlags;
     static bool draw = true;
-    ImGui::Begin("  ", &draw, windowFlags);
+    ImGui::Begin(Data::NextTitle.c_str(), &draw, windowFlags);
 
     Data::CurrentWindow->Render();;
 

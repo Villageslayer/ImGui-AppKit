@@ -3,10 +3,12 @@
 #include <Windows.h>
 #include <d3d11.h>
 #include <iostream>
+#include <vector>
 
 #include "../Library/ImGui/imgui_impl_dx11.h"
 #include "../Library/ImGui/imgui_impl_win32.h"
 #include "../Library/ImGui/imgui.h"
+
 
 #include "Render.h"
 #include "Style.h"
@@ -17,6 +19,7 @@
 #include "Windows/LoginWindow.h"
 #include "Windows/MainWindow.h"
 #include "Windows/SideWindow.h"
+
 
 
 namespace Global
