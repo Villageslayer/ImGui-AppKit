@@ -5,9 +5,12 @@ namespace Widgets {
 	namespace Nav {
 		void Side(float buttonWidth);
 		void Login(float buttonWidth);
+		
 	}
 	namespace Deco{
-	void Footer();
+		void Footer();
+		void tooltip(const char* text);
 	}
+
 	
 } // namespace Widgets

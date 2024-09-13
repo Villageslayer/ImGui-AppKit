@@ -12,61 +12,77 @@ void navbar() {
 		auto* nextWindow = new MainWindow();
 		Manager::SwitchWindow(nextWindow);
 	}
-	
-}
-
-void menubar() {
-
-	if (BUTTON("Menu1"))
-	{
-		Nav::currentTab = 1;
-	}
-	SAMELINE
-	if (BUTTON("Menu2"))
-	{
-		Nav::currentTab = 2;
-	}
-	SAMELINE
-	if (BUTTON("Menu3"))
-	{
-		Nav::currentTab = 3;
-	}
-	SAMELINE
-	if (BUTTON("Menu4"))
-		{
-			Nav::currentTab = 4;
-		}
-	SAMELINE
-	if (BUTTON("Menu5"))
-		{
-			Nav::currentTab = 5;
-		}
-
 }
 
 void SideWindow::Render()
 {
 	auto itemSpacing = ImGui::GetStyle().ItemSpacing.x;
-	Manager::SetNextSize(300.0f, 300.0f);
-	//Hedline
+	Manager::SetNextSize(600.0f, 800.0f);
+	// Headline
 	ImGui::Text("Side Window");
 	SAMELINE
-	navbar();
+		navbar();
 	ImGui::Separator();
-	//Content
-	BCHILD("##BODY", ImVec2(300, 200), false, ImGuiWindowFlags_NoMove);
-	//Left side of the window
-	BCHILD("##MENU", ImVec2(300-itemSpacing*2, 40), true);
-	menubar();
+	// Content
+	BCHILD("##BODY", ImVec2(580, 600), false, ImGuiWindowFlags_NoMove);
+
+	if (ImGui::BeginTabBar("##Tabs"))
+	{
+		if (ImGui::BeginTabItem("Colors"))
+		{
+			BCHILD("##example", ImVec2(560, 540), true);
+			// Color Pickers for ImGui Styles
+			ImGuiStyle& style = ImGui::GetStyle();
+			for (int i = 0; i < ImGuiCol_COUNT; i++)
+			{
+				const char* name = ImGui::GetStyleColorName(i);
+				ImGui::ColorEdit4(name, (float*)&style.Colors[i]);
+			}
+
+			// Example Widgets
+			
+			ECHILD;
+			ImGui::Separator();
+			ImGui::EndTabItem();
+
+		}
+
+		if (ImGui::BeginTabItem("Style Settings"))
+		{
+			// Style Settings
+			ImGuiStyle& style = ImGui::GetStyle();
+			ImGui::SliderFloat("Frame Rounding", &style.FrameRounding, 0.0f, 12.0f, "%.0f");
+			ImGui::SliderFloat("Grab Rounding", &style.GrabRounding, 0.0f, 12.0f, "%.0f");
+			ImGui::SliderFloat("Window Rounding", &style.WindowRounding, 0.0f, 12.0f, "%.0f");
+			ImGui::SliderFloat("Child Rounding", &style.ChildRounding, 0.0f, 12.0f, "%.0f");
+			ImGui::SliderFloat("Popup Rounding", &style.PopupRounding, 0.0f, 12.0f, "%.0f");
+			ImGui::SliderFloat("Scrollbar Rounding", &style.ScrollbarRounding, 0.0f, 12.0f, "%.0f");
+			ImGui::EndTabItem();
+		}
+
+		ImGui::EndTabBar();
+	}
 	ECHILD;
+	BCHILD("##example", ImVec2(400, 100), true);
+	ImGui::Text("This is an example text.");
 
-
-
-
+	if (ImGui::Button("Example Button"))
+	{
+		// Button action
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Hovered Button"))
+	{
+		// Button action
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Active Button"))
+	{
+		// Button action
+	}
 
 	ECHILD;
-	
-
-
-
 }
+
+
+

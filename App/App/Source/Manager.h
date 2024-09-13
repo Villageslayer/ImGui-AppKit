@@ -5,6 +5,7 @@ namespace Manager
     namespace Data
     {
         inline WindowBase* CurrentWindow = nullptr;
+        inline WindowBase* SecondWindow = nullptr;
         inline float NextSizeX = 300.0f;
         inline float NextSizeY = 300.0f;
     }
