@@ -50,30 +50,34 @@ namespace Widgets::Nav
 {
 	namespace Buttons 
 	{	
-		void Login(float buttonWidth) {
-			if (ImGui::Button("LogIn", ImVec2(buttonWidth, 0.0f)))
-			{
-				Manager::ClearWindow();
-				auto* nextWindow = new LoginWindow();
-				Manager::SwitchWindow(nextWindow);
-			}
-		}
-
-		void Side(float buttonWidth) {
-			if (ImGui::Button("Side", ImVec2(buttonWidth, 0.0f)))
-			{
-				Manager::ClearWindow();
-				auto* nextWindow = new SideWindow();
-				Manager::SwitchWindow(nextWindow);
-			}
-		}
-
-	void Main(float buttonWidth) {
-		if (ImGui::Button("Main", ImVec2(buttonWidth, 0.0f)))
+		namespace Buttons
 		{
-			Manager::ClearWindow();
-			auto* nextWindow = new MainWindow();
-			Manager::SwitchWindow(nextWindow);
+			void Login(float buttonWidth) {
+				if (ImGui::Button("LogIn", ImVec2(buttonWidth, 0.0f)))
+				{
+					Manager::ClearWindow();
+					auto nextWindow = new LoginWindow(); // Explicitly specify the type
+					Manager::SwitchWindow(nextWindow);
+				}
+			}
+
+			void Side(float buttonWidth) {
+				if (ImGui::Button("Side", ImVec2(buttonWidth, 0.0f)))
+				{
+					Manager::ClearWindow();
+					SideWindow* nextWindow = new SideWindow(); // Explicitly specify the type
+					Manager::SwitchWindow(nextWindow);
+				}
+			}
+
+			void Main(float buttonWidth) {
+				if (ImGui::Button("Main", ImVec2(buttonWidth, 0.0f)))
+				{
+					Manager::ClearWindow();
+					MainWindow* nextWindow = new MainWindow(); // Explicitly specify the type
+					Manager::SwitchWindow(nextWindow);
+				}
+			}
 		}
 	}
 } // namespace Widgets::Nav
