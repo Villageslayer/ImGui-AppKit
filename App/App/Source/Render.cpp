@@ -92,11 +92,12 @@ void Render::Loop()
         return;
     }
 
-    ShowWindow(Data::MainWindow, SW_HIDE);
+    ShowWindow(Data::MainWindow, SW_SHOW);
     UpdateWindow(Data::MainWindow);
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO(); // Declare io variable
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
@@ -115,6 +116,7 @@ void Render::Loop()
     MONITORINFO info = {};
     info.cbSize = sizeof(MONITORINFO);
     GetMonitorInfoW(monitor, &info);
+    
 
     io.IniFilename = nullptr;
     io.Fonts->AddFontFromFileTTF(R"(C:\Windows\Fonts\segoeui.ttf)", 17);
@@ -126,6 +128,7 @@ void Render::Loop()
 
     while (!Global::ShouldExit)
     {
+        SetWindowPos(Data::MainWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
         MSG msg;
         while (PeekMessage(&msg, nullptr, 0U, 0U, PM_REMOVE))
         {

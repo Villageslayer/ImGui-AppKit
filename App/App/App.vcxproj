@@ -195,23 +195,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Library\Config\ini.c" />
+    <ClCompile Include="Library\Config\INIReader.cpp" />
     <ClCompile Include="Library\ImGui\imgui.cpp" />
     <ClCompile Include="Library\ImGui\imgui_draw.cpp" />
     <ClCompile Include="Library\ImGui\imgui_impl_dx11.cpp" />
     <ClCompile Include="Library\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="Library\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Library\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Source\Cheat\Control.cpp" />
+    <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Entry.cpp" />
+    <ClCompile Include="Source\GFCK\mouse.cpp" />
     <ClCompile Include="Source\Manager.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Style.cpp" />
     <ClCompile Include="Source\Widgets\Widgets.cpp" />
+    <ClCompile Include="Source\Windows\ControlWindow.cpp" />
     <ClCompile Include="Source\Windows\LoginWindow.cpp" />
     <ClCompile Include="Source\Windows\MainWindow.cpp" />
     <ClCompile Include="Source\Windows\SideWindow.cpp" />
     <ClCompile Include="Source\Windows\WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Library\Config\ini.h" />
+    <ClInclude Include="Library\Config\INIReader.h" />
     <ClInclude Include="Library\ImGui\imconfig.h" />
     <ClInclude Include="Library\ImGui\imgui.h" />
     <ClInclude Include="Library\ImGui\imgui_impl_dx11.h" />
@@ -220,12 +228,16 @@
     <ClInclude Include="Library\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Library\ImGui\imstb_textedit.h" />
     <ClInclude Include="Library\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Source\Cheat\Control.h" />
+    <ClInclude Include="Source\Config\ConfigManager.h" />
     <ClInclude Include="Source\define.h" />
+    <ClInclude Include="Source\GFCK\mouse.h" />
     <ClInclude Include="Source\Global.h" />
     <ClInclude Include="Source\Manager.h" />
     <ClInclude Include="Source\Render.h" />
     <ClInclude Include="Source\Style.h" />
     <ClInclude Include="Source\Widgets\Widgets.h" />
+    <ClInclude Include="Source\Windows\ControlWindow.h" />
     <ClInclude Include="Source\Windows\MainWindow.h" />
     <ClInclude Include="Source\Windows\SideWindow.h" />
     <ClInclude Include="Source\Windows\WindowBase.h" />

@@ -1,12 +1,13 @@
 #pragma once
 
+
 namespace Manager
 {
     namespace Data
     {
         inline WindowBase* CurrentWindow = nullptr;
         inline std::vector<WindowBase*> windows;
-        inline ImGuiWindowFlags DefaultWindowFlags = ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
+        inline ImGuiWindowFlags DefaultWindowFlags =  ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
         inline ImGuiWindowFlags NextWindowFlags = 0;
 		inline std::string NextTitle = "Default"; // Cannot Be Empty  Crashes
         inline float NextSizeX = 300.0f;
@@ -15,7 +16,7 @@ namespace Manager
 	struct Config
 	{
 		float width;
-		float height;e
+		float height;
 		ImGuiWindowFlags flags;
 		std::string title;
 	};

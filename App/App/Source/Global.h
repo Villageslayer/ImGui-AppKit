@@ -8,6 +8,7 @@
 #include "../Library/ImGui/imgui_impl_dx11.h"
 #include "../Library/ImGui/imgui_impl_win32.h"
 #include "../Library/ImGui/imgui.h"
+#include "../Library/Config/INIReader.h"
 
 
 #include "Render.h"
@@ -19,6 +20,10 @@
 #include "Windows/LoginWindow.h"
 #include "Windows/MainWindow.h"
 #include "Windows/SideWindow.h"
+#include "Windows/ControlWindow.h"
+
+
+#include "Config/ConfigManager.h"
 
 
 
