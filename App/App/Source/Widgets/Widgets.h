@@ -3,20 +3,14 @@
 //
 namespace Widgets {
 	namespace Nav {
-		namespace Buttons {
-			void Main(float buttonWidth);
-			void Side(float buttonWidth);
-			void Login(float buttonWidth);
-		}
-		namespace Menu {
-			void Main();
-			void Side();
-			void Login();
-		}
+		void Side(float buttonWidth);
+		void Login(float buttonWidth);
+		
 	}
-	namespace Deco
-	{
+	namespace Deco{
 		void Footer();
+		void tooltip(const char* text);
 	}
+
 	
 } // namespace Widgets

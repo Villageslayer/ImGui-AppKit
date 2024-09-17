@@ -6,10 +6,7 @@ namespace Manager
     namespace Data
     {
         inline WindowBase* CurrentWindow = nullptr;
-        inline std::vector<WindowBase*> windows;
-        inline ImGuiWindowFlags DefaultWindowFlags =  ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoResize;
-        inline ImGuiWindowFlags NextWindowFlags = 0;
-		inline std::string NextTitle = "Default"; // Cannot Be Empty  Crashes
+        inline WindowBase* SecondWindow = nullptr;
         inline float NextSizeX = 300.0f;
         inline float NextSizeY = 300.0f;
     }

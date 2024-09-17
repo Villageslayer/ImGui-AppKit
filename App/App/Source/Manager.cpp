@@ -2,7 +2,8 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new ControlWindow();
+    Data::CurrentWindow = new MainWindow();
+   
 }
 
 void Manager::SetNextSize(const float width, const float height)
@@ -22,6 +23,7 @@ void Manager::SetNextTitle(std::string title)
 void Manager::ClearWindow()
 {
     delete Data::CurrentWindow;
+    delete Data::SecondWindow;
 }
 
 void Manager::SwitchWindow(WindowBase* newWindow)
@@ -40,9 +42,11 @@ void Manager::Render()
     static bool draw = true;
     ImGui::Begin(Data::NextTitle.c_str(), &draw, windowFlags);
 
-    Data::CurrentWindow->Render();;
-
+    Data::CurrentWindow->Render();
+    
     ImGui::End();
+
+    
 
     if (!draw)
         Global::ShouldExit = true;
