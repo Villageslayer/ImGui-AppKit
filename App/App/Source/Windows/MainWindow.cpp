@@ -61,9 +61,9 @@ void off() {
 }
 void navBar(auto buttonWidth) {
 	
-    Widgets::Nav::Side(buttonWidth);
+    Widgets::Nav::Buttons::Side(buttonWidth);
     ImGui::SameLine();
-    Widgets::Nav::Login(buttonWidth);
+    Widgets::Nav::Buttons::Login(buttonWidth);
     ImGui::Separator();
     ImGui::Separator();
 }
@@ -78,7 +78,7 @@ void menu(auto childWidth, auto itemSpacing) {
     if (BUTTON(Features::Aim::text, ImVec2(childWidth - itemSpacing * 2, 0.0f))) {
         Menu::currentTab = 1;
     }
-    Widgets::Deco::tooltip("Does yours suck?");
+        Widgets::Deco::tooltip("Does yours suck?");
     if (ImGui::Button(Features::ESP::text, ImVec2(childWidth - itemSpacing * 2, 0.0f))) {
         Menu::currentTab = 2;
     }
@@ -90,8 +90,7 @@ void menu(auto childWidth, auto itemSpacing) {
     //Main Window 
     Manager::SetNextSize(800.0f, 400.0f);
    
-    Manager::SetNextSize(500.0f, 300.0f);
-    Manager::SetNextSize(500.0f, 300.0f);
+    
 }
 void MainWindow::Render()
 {

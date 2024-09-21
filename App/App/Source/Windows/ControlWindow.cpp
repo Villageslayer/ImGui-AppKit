@@ -48,25 +48,26 @@ void ControlWindow::Render()
 	SEPARATOR;
     if (BUTTON("VeryLow",ImVec2(buttonWidth,30))){
 		SliderT = 10;
-		control.update(SliderX, SliderY, SliderT); // Update control with new slider value
+		control.update(SliderX, SliderY, 10); // Update control with new slider value
     }
     SAMELINE;
     if (BUTTON("Low", ImVec2(buttonWidth, 30)))
     {
-        SliderT = 10;
-        control.update(SliderX, SliderY, SliderT); // Update control with new slider value
+        SliderT = 8;
+        control.update(SliderX, SliderY, 8); // Update control with new slider value
     }
     SAMELINE;
     if (BUTTON("Medium", ImVec2(buttonWidth, 30)))
     {
-        SliderT = 10;
-        control.update(SliderX, SliderY, SliderT); // Update control with new slider value
+        SliderT = 7;
+        control.update(SliderX, SliderY, 7); // Update control with new slider value
+
     }
     SAMELINE; 
     if (BUTTON("High", ImVec2(buttonWidth, 30)))
     {
-        SliderT = 10;
-        control.update(SliderX, SliderY, SliderT); // Update control with new slider value
+       
+        control.update(SliderX, SliderY, 5); // Update control with new slider value
     }
 	ImGui::EndChild();
     if (BUTTON("Configga")) {

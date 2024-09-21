@@ -9,7 +9,7 @@ void navbar() {
 	if (ImGui::Button("GoBack", ImVec2(100, 0.0f)))
 	{
 		Manager::ClearWindow();
-		auto* nextWindow = new MainWindow();
+		auto* nextWindow = new ControlWindow();
 		Manager::SwitchWindow(nextWindow);
 	}
 }

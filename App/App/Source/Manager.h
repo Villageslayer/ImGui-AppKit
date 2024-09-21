@@ -9,6 +9,9 @@ namespace Manager
         inline WindowBase* SecondWindow = nullptr;
         inline float NextSizeX = 300.0f;
         inline float NextSizeY = 300.0f;
+		inline ImGuiWindowFlags NextWindowFlags = 0;
+		inline std::string NextTitle = "Window";
+		inline ImGuiWindowFlags DefaultWindowFlags =  ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoNav;
     }
 	struct Config
 	{
