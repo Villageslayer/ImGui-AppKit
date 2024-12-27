@@ -11,7 +11,7 @@ namespace Manager
         inline float NextSizeY = 300.0f;
 		inline ImGuiWindowFlags NextWindowFlags = 0;
 		inline std::string NextTitle = "Window";
-		inline ImGuiWindowFlags DefaultWindowFlags =  ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoNav;
+		inline ImGuiWindowFlags DefaultWindowFlags =  ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoNav;
     }
 	struct Config
 	{

@@ -2,26 +2,26 @@
 #include "../Widgets/Widgets.h"
 
 
-namespace Menu{
+namespace Menu {
 
-	int currentTab = 1;
-	bool isCollapsed = false;
+    int currentTab = 1;
+    bool isCollapsed = false;
 
 }
-namespace Features{
-	namespace Aim {
-		char text[4] = "Aim";
-		bool isActive = false;
-	}
-	namespace ESP {
-		char text[4] = "ESP";
-		bool isActive = false; 
+namespace Features {
+    namespace Aim {
+        char text[4] = "Aim";
+        bool isActive = false;
+    }
+    namespace ESP {
+        char text[4] = "ESP";
+        bool isActive = false;
 
         namespace Box {
             char text[6] = "Boxes";
             bool isActive = false;
             int style = 0;
-             
+
         }
         namespace Skeleton {
             char text[9] = "Skeleton";
@@ -34,9 +34,9 @@ namespace Features{
             int thickness = 1;
             int style = 0;
         }
-	}
+    }
     namespace Misc {
-		char text[5] = "Misc";
+        char text[5] = "Misc";
         bool isActive = false;
         namespace NoRecoil {
             char text[9] = "NoRecoil";
@@ -60,7 +60,7 @@ void off() {
     TXT("Feature is OFF");
 }
 void navBar(auto buttonWidth) {
-	
+
     Widgets::Nav::Buttons::Side(buttonWidth);
     ImGui::SameLine();
     Widgets::Nav::Buttons::Login(buttonWidth);
@@ -70,7 +70,7 @@ void navBar(auto buttonWidth) {
 
 
 
-   
+
 void menu(auto childWidth, auto itemSpacing) {
     // Menu COlUMN
     BCHILD("##Menu", ImVec2(childWidth, 300), true);
@@ -78,7 +78,7 @@ void menu(auto childWidth, auto itemSpacing) {
     if (BUTTON(Features::Aim::text, ImVec2(childWidth - itemSpacing * 2, 0.0f))) {
         Menu::currentTab = 1;
     }
-        Widgets::Deco::tooltip("Does yours suck?");
+    Widgets::Deco::tooltip("Does yours suck?");
     if (ImGui::Button(Features::ESP::text, ImVec2(childWidth - itemSpacing * 2, 0.0f))) {
         Menu::currentTab = 2;
     }
@@ -89,12 +89,12 @@ void menu(auto childWidth, auto itemSpacing) {
     Widgets::Deco::tooltip(Features::Misc::text);
     //Main Window 
     Manager::SetNextSize(800.0f, 400.0f);
-   
-    
+
+
 }
 void MainWindow::Render()
 {
-    
+
     Manager::SetNextSize(500.0f, 300.0f);
     auto numButtons = 2.0f;
     auto numChildren = 3.0f;
@@ -102,36 +102,36 @@ void MainWindow::Render()
     const ImVec2 windowSize = ImGui::GetWindowSize();
     float buttonWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numButtons) - ImGui::GetStyle().ItemSpacing.x;
     float childWidth = ((windowSize.x - ImGui::GetStyle().ItemSpacing.x * 2) / numChildren) - ImGui::GetStyle().ItemSpacing.x;
-	
-	BCHILD("##HEADER", ImVec2(windowSize.x, 25), false, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+
+    BCHILD("##HEADER", ImVec2(windowSize.x, 25), false, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
     Widgets::Nav::Buttons::Side(buttonWidth);
-	SAMELINE;
+    SAMELINE;
     Widgets::Nav::Buttons::Login(buttonWidth);
-	ECHILD; //HEADER
+    ECHILD; //HEADER
     // Body of the window
-    BCHILD("##BODY", ImVec2((childWidth + itemSpacing*2) * numChildren, 300), false, ImGuiWindowFlags_NoMove);
+    BCHILD("##BODY", ImVec2((childWidth + itemSpacing * 2) * numChildren, 300), false, ImGuiWindowFlags_NoMove);
     //Left side of the window
-	menu(childWidth, itemSpacing);
+    menu(childWidth, itemSpacing);
 
     //Right side of the window
     SAMELINE;
 
     BCHILD("##CONTENT", ImVec2(childWidth * 2, 300), true);
-    
+
     switch (Menu::currentTab)
     {
-		// Aim Feature
+        // Aim Feature
     case 1:
-		//Header For Feature 1
+        //Header For Feature 1
         if (ImGui::Checkbox(Features::Aim::text, &Features::Aim::isActive)) {
             // Do something when the checkbox is toggled
         }
         SEPARATOR
-        BCHILD("##AIM", ImVec2(childWidth * 2 - 4 * itemSpacing, 250), true);
-        
-			//Settings for Feature 1
+            BCHILD("##AIM", ImVec2(childWidth * 2 - 4 * itemSpacing, 250), true);
+
+        //Settings for Feature 1
         if (Features::Aim::isActive) {
-            
+
             ImGui::Text("I'm active");
         }
         else {
@@ -139,15 +139,15 @@ void MainWindow::Render()
             off();
         }
         ECHILD; //Aim
-		break;
-        
-		// ESP Feature
+        break;
+
+        // ESP Feature
     case 2:
         //Header For Feature 2
         if (ImGui::Checkbox(Features::ESP::text, &Features::ESP::isActive)) {
             // Do shit
         }
-        
+
         if (Features::ESP::isActive) {
             SAMELINE;
             if (ImGui::Checkbox(Features::ESP::Box::text, &Features::ESP::Box::isActive)) {
@@ -168,33 +168,33 @@ void MainWindow::Render()
         SEPARATOR; // More Settings
         BCHILD("##ESP", ImVec2(childWidth * 2 - 4 * itemSpacing, 250), true);
 
-			//
+        //
         if (Features::ESP::isActive) {
-            
+
             if (Features::ESP::Box::isActive) {
                 BCHILD("##BOXES", ImVec2(childWidth * 2 - 4 * itemSpacing, 50));
                 TXT("Style: 0:Outline 1:Filled 2:Corner");
                 ImGui::SliderInt("", &Features::ESP::Box::style, 0, 2);
                 ECHILD;
             }
-            
+
             if (Features::ESP::Skeleton::isActive) {
                 BCHILD("##Skelly", ImVec2(childWidth * 2 - 4 * itemSpacing, 50));
                 TXT("Spooky");
                 ImGui::SliderInt("Thickness", &Features::ESP::Skeleton::thickness, 1, 5);
                 ECHILD;
             }
-            
-            
+
+
             if (Features::ESP::Tracer::isActive) {
                 BCHILD("##Tracer", ImVec2(childWidth * 2 - 4 * itemSpacing, 100));
                 TXT("Style: 0:Top 1:Crosshair 2: Bottom");
                 ImGui::SliderInt(" ", &Features::ESP::Tracer::style, 0, 2);
                 TXT("Thickness");
-                ImGui::SliderInt("  " , &Features::ESP::Tracer::thickness, 1, 5);
+                ImGui::SliderInt("  ", &Features::ESP::Tracer::thickness, 1, 5);
                 ECHILD;
             }
-            
+
         }
         else {
             // text if OFF 
@@ -202,15 +202,15 @@ void MainWindow::Render()
         }
         ECHILD; //ESP
         break;
-    
 
-		// Misc Feature
-	case 3:
-		//Header For Misc
+
+        // Misc Feature
+    case 3:
+        //Header For Misc
         TXT("%s", Features::Misc::text);
         SEPARATOR;
-        
-            
+
+
         BCHILD("##Misc", ImVec2(childWidth * 2 - 4 * itemSpacing, 250), true);
         BCHILD("##Norecoil", ImVec2(childWidth * 2 - 8 * itemSpacing, 40), true);
         if (ImGui::Checkbox(Features::Misc::NoRecoil::text, &Features::Misc::NoRecoil::isActive)) {
@@ -232,15 +232,15 @@ void MainWindow::Render()
         BCHILD("##Stuff", ImVec2(childWidth * 2 - 8 * itemSpacing, 40), true);
         TXT("STUFF");
         ECHILD;
-       
-        
+
+
         ECHILD; //Misc
         break;
     }
     ECHILD; //Content
     ECHILD; //BODY
-	Widgets::Deco::Footer();
-	//Footer    
-	
-	
+    Widgets::Deco::Footer();
+    //Footer    
+
+
 }

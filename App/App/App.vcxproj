@@ -214,7 +214,9 @@
     <ClCompile Include="Source\Windows\ControlWindow.cpp" />
     <ClCompile Include="Source\Windows\LoginWindow.cpp" />
     <ClCompile Include="Source\Windows\MainWindow.cpp" />
+    <ClCompile Include="Source\Windows\MenuWindow.cpp" />
     <ClCompile Include="Source\Windows\SideWindow.cpp" />
+    <ClCompile Include="Source\Windows\TestWindow.cpp" />
     <ClCompile Include="Source\Windows\WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -239,7 +241,9 @@
     <ClInclude Include="Source\Widgets\Widgets.h" />
     <ClInclude Include="Source\Windows\ControlWindow.h" />
     <ClInclude Include="Source\Windows\MainWindow.h" />
+    <ClInclude Include="Source\Windows\MenuWindow.h" />
     <ClInclude Include="Source\Windows\SideWindow.h" />
+    <ClInclude Include="Source\Windows\TestWindow.h" />
     <ClInclude Include="Source\Windows\WindowBase.h" />
     <ClInclude Include="Source\Windows\LoginWindow.h" />
   </ItemGroup>

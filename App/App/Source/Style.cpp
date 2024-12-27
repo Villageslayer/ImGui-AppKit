@@ -2,13 +2,19 @@
 
 void Style::Apply()
 {
+    
+    
+        
+        
+    
+
     ImGuiStyle& style = ImGui::GetStyle();
 
     style.Alpha = 1.0f;
     style.DisabledAlpha = 0.1000000014901161f;
     style.WindowPadding = ImVec2(8.0f, 8.0f);
     style.WindowRounding = 10.0f;
-    style.WindowBorderSize = 0.0f;
+    style.WindowBorderSize = 2.0f;
     style.WindowMinSize = ImVec2(30.0f, 30.0f);
     style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
     style.WindowMenuButtonPosition = ImGuiDir_Right;
@@ -40,7 +46,7 @@ void Style::Apply()
     style.Colors[ImGuiCol_WindowBg] = ImVec4(0.09803921729326248f, 0.09803921729326248f, 0.09803921729326248f, 1.0f);
     style.Colors[ImGuiCol_ChildBg] = ImVec4(0.20f, 0.20f, 0.20f, 0.20f);
     style.Colors[ImGuiCol_PopupBg] = ImVec4(0.09803921729326248f, 0.09803921729326248f, 0.09803921729326248f, 1.0f);
-    style.Colors[ImGuiCol_Border] = ImVec4(0.0f, 1.0f, 0.572549045085907f, 0.54935622215271f);
+	style.Colors[ImGuiCol_Border] = COLOR_ORANGE;
     style.Colors[ImGuiCol_BorderShadow] = COLOR_ORANGE;
     style.Colors[ImGuiCol_FrameBg] = ImVec4(0.1568627506494522f, 0.1568627506494522f, 0.1568627506494522f, 1.0f);
     style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(0.3803921639919281f, 0.4235294163227081f, 0.572549045085907f, 0.5490196347236633f);
@@ -56,8 +62,8 @@ void Style::Apply()
     style.Colors[ImGuiCol_CheckMark] = ImVec4(1.0f, 0.65f, 0.0f, 1.0f);
     style.Colors[ImGuiCol_SliderGrab] = COLOR_ORANGE;
     style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.8156862854957581f, 0.772549033164978f, 0.9647058844566345f, 0.5490196347236633f);
-    style.Colors[ImGuiCol_Button] = ImVec4(0.6196078658103943f, 0.5764706134796143f, 0.7686274647712708f, 0.5490196347236633f);
-    style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.7372549176216125f, 0.6941176652908325f, 0.886274516582489f, 0.5490196347236633f);
+	style.Colors[ImGuiCol_Button] = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);
+    style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.09803921729326248f, 0.09803921729326248f, 0.09803921729326248f, 1.0f);
     style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.8156862854957581f, 0.772549033164978f, 0.9647058844566345f, 0.5490196347236633f);
     style.Colors[ImGuiCol_Header] = ImVec4(0.6196078658103943f, 0.5764706134796143f, 0.7686274647712708f, 0.5490196347236633f);
     style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.7372549176216125f, 0.6941176652908325f, 0.886274516582489f, 0.5490196347236633f);

@@ -67,6 +67,30 @@
     <ClCompile Include="Source\Widgets\Widgets.cpp">
       <Filter>Source\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="Library\Config\ini.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\Config\INIReader.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Cheat\Control.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Config\ConfigManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GFCK\mouse.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\ControlWindow.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\TestWindow.cpp">
+      <Filter>Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\MenuWindow.cpp">
+      <Filter>Source\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\ImGui\imconfig.h">
@@ -122,6 +146,18 @@
     </ClInclude>
     <ClInclude Include="Source\Widgets\Widgets.h">
       <Filter>Source\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Config\ini.h" />
+    <ClInclude Include="Library\Config\INIReader.h" />
+    <ClInclude Include="Source\Cheat\Control.h" />
+    <ClInclude Include="Source\Config\ConfigManager.h" />
+    <ClInclude Include="Source\GFCK\mouse.h" />
+    <ClInclude Include="Source\Windows\ControlWindow.h" />
+    <ClInclude Include="Source\Windows\TestWindow.h">
+      <Filter>Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Windows\MenuWindow.h">
+      <Filter>Source\Windows</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

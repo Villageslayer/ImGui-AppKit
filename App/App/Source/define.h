@@ -29,3 +29,8 @@
 #define COLOR_MAGENTA    ImVec4(1.0f, 0.0f, 1.0f, 1.0f)
 #define COLOR_ORANGE    ImVec4(1.0f, 0.65f, 0.0f, 1.0f)
 #define COLOR_TRANSPARENT ImVec4(0.0f, 0.0f, 0.0f, 0.0f)
+
+
+#ifndef ECHILD
+#include <errno.h>
+#endif

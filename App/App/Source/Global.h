@@ -21,6 +21,8 @@
 #include "Windows/MainWindow.h"
 #include "Windows/SideWindow.h"
 #include "Windows/ControlWindow.h"
+#include "Windows/TestWindow.h"
+#include "Windows/MenuWindow.h"
 
 
 #include "Config/ConfigManager.h"
@@ -30,4 +32,5 @@
 namespace Global
 {
     inline bool ShouldExit = false;
+    inline ImFont* BigIcons30 = nullptr;
 }

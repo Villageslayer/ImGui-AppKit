@@ -2,7 +2,7 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new ControlWindow();
+    Data::CurrentWindow = new MenuWindow();
    
 }
 
