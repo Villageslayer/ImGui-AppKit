@@ -5,14 +5,6 @@ namespace Nav
 	int currentTab = 1;
 }
 
-void navbar() {
-	if (ImGui::Button("GoBack", ImVec2(100, 0.0f)))
-	{
-		Manager::ClearWindow();
-		auto* nextWindow = new ControlWindow();
-		Manager::SwitchWindow(nextWindow);
-	}
-}
 
 void SideWindow::Render()
 {
@@ -21,7 +13,7 @@ void SideWindow::Render()
 	// Headline
 	ImGui::Text("Side Window");
 	SAMELINE
-		navbar();
+		
 	ImGui::Separator();
 	// Content
 	BCHILD("##BODY", ImVec2(580, 600), false, ImGuiWindowFlags_NoMove);

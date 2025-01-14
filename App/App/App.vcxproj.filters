@@ -20,11 +20,14 @@
     <Filter Include="Source\Config">
       <UniqueIdentifier>{71fc1ccd-62d9-4937-a1b5-44760b0354d8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Style">
+      <UniqueIdentifier>{5f108c3f-55ff-4b0a-91a0-1e0a36651fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Backend">
+      <UniqueIdentifier>{1cf0b310-69bf-4cdb-825d-2e49c5107441}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Entry.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Library\ImGui\imgui.cpp">
       <Filter>Library\ImGui</Filter>
     </ClCompile>
@@ -46,9 +49,6 @@
     <ClCompile Include="Source\Render.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Style.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Manager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
@@ -67,29 +67,20 @@
     <ClCompile Include="Source\Widgets\Widgets.cpp">
       <Filter>Source\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="Library\Config\ini.c">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Library\Config\INIReader.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Cheat\Control.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Config\ConfigManager.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GFCK\mouse.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Windows\ControlWindow.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Windows\TestWindow.cpp">
       <Filter>Source\Windows</Filter>
     </ClCompile>
     <ClCompile Include="Source\Windows\MenuWindow.cpp">
       <Filter>Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Windows\ChildWindow.cpp">
+      <Filter>Source\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Style.cpp">
+      <Filter>Source\Style</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entry.cpp">
+      <Filter>Source\Backend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -123,9 +114,6 @@
     <ClInclude Include="Source\Render.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Style.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Manager.h">
       <Filter>Source</Filter>
     </ClInclude>
@@ -147,17 +135,26 @@
     <ClInclude Include="Source\Widgets\Widgets.h">
       <Filter>Source\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Library\Config\ini.h" />
-    <ClInclude Include="Library\Config\INIReader.h" />
-    <ClInclude Include="Source\Cheat\Control.h" />
-    <ClInclude Include="Source\Config\ConfigManager.h" />
-    <ClInclude Include="Source\GFCK\mouse.h" />
-    <ClInclude Include="Source\Windows\ControlWindow.h" />
     <ClInclude Include="Source\Windows\TestWindow.h">
       <Filter>Source\Windows</Filter>
     </ClInclude>
     <ClInclude Include="Source\Windows\MenuWindow.h">
       <Filter>Source\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Windows\ChildWindow.h">
+      <Filter>Source\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Style.h">
+      <Filter>Source\Style</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\ImGui\LoadImage.h">
+      <Filter>Source\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\ImGui\stb_image.h">
+      <Filter>Source\Backend</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

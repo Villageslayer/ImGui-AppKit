@@ -12,6 +12,7 @@ namespace Manager
 		inline ImGuiWindowFlags NextWindowFlags = 0;
 		inline std::string NextTitle = "Window";
 		inline ImGuiWindowFlags DefaultWindowFlags =  ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoFocusOnAppearing | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoNav;
+		inline bool showWindow = true;
     }
 	struct Config
 	{
@@ -24,6 +25,7 @@ namespace Manager
     void SetNextSize(float width, float height);
     void SetNextFlags(ImGuiWindowFlags NextFlags);
     void SetNextTitle(std::string title);
+	void ToggleWindow();
     void ClearWindow();
     void SwitchWindow(WindowBase* newWindow);
     void Render();

@@ -2,7 +2,7 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new MenuWindow();
+    Data::CurrentWindow = new ChildWindow();
    
 }
 
@@ -20,6 +20,11 @@ void Manager::SetNextTitle(std::string title)
     Data::NextTitle = title;
 }
 
+void Manager::ToggleWindow()
+{
+	Data::showWindow = !Data::showWindow;
+}
+
 void Manager::ClearWindow()
 {
     delete Data::CurrentWindow;
@@ -33,6 +38,9 @@ void Manager::SwitchWindow(WindowBase* newWindow)
 
 void Manager::Render()
 {
+    if (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Insert))) {
+        Manager::ToggleWindow();
+    }
     const ImVec2 windowSize = { Data::NextSizeX, Data::NextSizeY };
     ImGui::SetNextWindowSize(windowSize);
     ImGui::SetNextWindowPos({ GetSystemMetrics(SM_CXSCREEN) / 2 - windowSize.x / 2, GetSystemMetrics(SM_CYSCREEN) / 2 - windowSize.y / 2 }, ImGuiCond_FirstUseEver);
@@ -40,12 +48,13 @@ void Manager::Render()
     
     ImGuiWindowFlags windowFlags = Data::DefaultWindowFlags | Data::NextWindowFlags;
     static bool draw = true;
-    ImGui::Begin(Data::NextTitle.c_str(), &draw, windowFlags);
+    if (Data::showWindow) {
+        ImGui::Begin(Data::NextTitle.c_str(), &draw, windowFlags);
 
-    Data::CurrentWindow->Render();
-    
-    ImGui::End();
+        Data::CurrentWindow->Render();
 
+        ImGui::End();
+    }
     
 
     if (!draw)

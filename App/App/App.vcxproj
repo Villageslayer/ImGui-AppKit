@@ -150,6 +150,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -166,6 +169,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>MinSpace</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -185,6 +189,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <Optimization>MinSpace</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -195,23 +200,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Library\Config\ini.c" />
-    <ClCompile Include="Library\Config\INIReader.cpp" />
     <ClCompile Include="Library\ImGui\imgui.cpp" />
     <ClCompile Include="Library\ImGui\imgui_draw.cpp" />
     <ClCompile Include="Library\ImGui\imgui_impl_dx11.cpp" />
     <ClCompile Include="Library\ImGui\imgui_impl_win32.cpp" />
     <ClCompile Include="Library\ImGui\imgui_tables.cpp" />
     <ClCompile Include="Library\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="Source\Cheat\Control.cpp" />
-    <ClCompile Include="Source\Config\ConfigManager.cpp" />
     <ClCompile Include="Source\Entry.cpp" />
-    <ClCompile Include="Source\GFCK\mouse.cpp" />
     <ClCompile Include="Source\Manager.cpp" />
     <ClCompile Include="Source\Render.cpp" />
     <ClCompile Include="Source\Style.cpp" />
     <ClCompile Include="Source\Widgets\Widgets.cpp" />
-    <ClCompile Include="Source\Windows\ControlWindow.cpp" />
+    <ClCompile Include="Source\Windows\ChildWindow.cpp" />
     <ClCompile Include="Source\Windows\LoginWindow.cpp" />
     <ClCompile Include="Source\Windows\MainWindow.cpp" />
     <ClCompile Include="Source\Windows\MenuWindow.cpp" />
@@ -220,8 +220,6 @@
     <ClCompile Include="Source\Windows\WindowBase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Library\Config\ini.h" />
-    <ClInclude Include="Library\Config\INIReader.h" />
     <ClInclude Include="Library\ImGui\imconfig.h" />
     <ClInclude Include="Library\ImGui\imgui.h" />
     <ClInclude Include="Library\ImGui\imgui_impl_dx11.h" />
@@ -230,16 +228,15 @@
     <ClInclude Include="Library\ImGui\imstb_rectpack.h" />
     <ClInclude Include="Library\ImGui\imstb_textedit.h" />
     <ClInclude Include="Library\ImGui\imstb_truetype.h" />
-    <ClInclude Include="Source\Cheat\Control.h" />
-    <ClInclude Include="Source\Config\ConfigManager.h" />
+    <ClInclude Include="Library\ImGui\LoadImage.h" />
+    <ClInclude Include="Library\ImGui\stb_image.h" />
     <ClInclude Include="Source\define.h" />
-    <ClInclude Include="Source\GFCK\mouse.h" />
     <ClInclude Include="Source\Global.h" />
     <ClInclude Include="Source\Manager.h" />
     <ClInclude Include="Source\Render.h" />
     <ClInclude Include="Source\Style.h" />
     <ClInclude Include="Source\Widgets\Widgets.h" />
-    <ClInclude Include="Source\Windows\ControlWindow.h" />
+    <ClInclude Include="Source\Windows\ChildWindow.h" />
     <ClInclude Include="Source\Windows\MainWindow.h" />
     <ClInclude Include="Source\Windows\MenuWindow.h" />
     <ClInclude Include="Source\Windows\SideWindow.h" />
@@ -247,7 +244,19 @@
     <ClInclude Include="Source\Windows\WindowBase.h" />
     <ClInclude Include="Source\Windows\LoginWindow.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets" Condition="Exists('..\packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets')" />
+    <Import Project="..\packages\directxtk_desktop_2019.2024.10.29.1\build\native\directxtk_desktop_2019.targets" Condition="Exists('..\packages\directxtk_desktop_2019.2024.10.29.1\build\native\directxtk_desktop_2019.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.XAudio2.Redist.1.2.11\build\native\Microsoft.XAudio2.Redist.targets'))" />
+    <Error Condition="!Exists('..\packages\directxtk_desktop_2019.2024.10.29.1\build\native\directxtk_desktop_2019.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtk_desktop_2019.2024.10.29.1\build\native\directxtk_desktop_2019.targets'))" />
+  </Target>
 </Project>
