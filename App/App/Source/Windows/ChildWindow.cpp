@@ -4,7 +4,7 @@
 
 ChildWindow::ChildWindow() {
     title = "Child Window";
-    LoadImagesFromDirectory(R"(C:\Users\ben.schmitz\Downloads\r6operators-icons-2.10.0\High-resolution PNG\)");
+    LoadImagesFromDirectory(R"()");
 }
 
 void ChildWindow::LoadImagesFromDirectory(const std::string& directoryPath) {
