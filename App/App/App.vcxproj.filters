@@ -82,6 +82,12 @@
     <ClCompile Include="Source\Entry.cpp">
       <Filter>Source\Backend</Filter>
     </ClCompile>
+    <ClCompile Include="Library\Config\Include\config.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Library\Config\Include\fileIO.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Library\ImGui\imconfig.h">
@@ -152,6 +158,15 @@
     </ClInclude>
     <ClInclude Include="Library\ImGui\stb_image.h">
       <Filter>Source\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Config\Include\config.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Config\Include\fileIO.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Library\Config\Include\hash.h">
+      <Filter>Library</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

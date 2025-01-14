@@ -4,7 +4,7 @@
 
 ChildWindow::ChildWindow() {
     title = "Child Window";
-    LoadImagesFromDirectory(R"()");
+    LoadImagesFromDirectory(R"(C:\r6operators-icons-2.10.0\High-resolution PNG\)");
 }
 
 void ChildWindow::LoadImagesFromDirectory(const std::string& directoryPath) {
@@ -35,13 +35,21 @@ void ChildWindow::Render() {
 
     // Ensure the text buffer is large enough and null-terminated
     text.resize(1024); // Adjust the size as needed
-
+	std::string text;
+    
+	BCHILD("#Stuff",ImVec2(0,0));
     for (size_t i = 0; i < Images.size(); ++i) {
-        ImGui::ImageButton((ImTextureID)(intptr_t)Images[i], ImVec2(64, 64));
-        if (i % 2 == 0) {
+        if (ImGui::ImageButton((ImTextureID)(intptr_t)Images[i], ImVec2(64, 64))) {
+			// Handle the image click
+            text = "You clicked on " + imageFiles[i];
+            
+			
+        }
+        if (i % 5 != 0) {
             ImGui::SameLine();
         }
     }
-
+	ImGui::EndChild();
+    ImGui::Text(text.c_str());
     //ImGui::InputTextMultiline("##ChildWindow", &text[0], text.size(), ImVec2(width - 20, height - 40));
 }
