@@ -5,6 +5,12 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "../Library/ImGui/stb_image.h"
 
+/* How to Load Image
+* int my_image_width = 0;
+    int my_image_height = 0;
+    bool ret = LoadTextureFromFile("C:\\Image.png", &Data::Image, &my_image_width, &my_image_height);
+	IM_ASSERT(ret);
+*/
 
 // Simple helper function to load an image into a DX11 texture with common settings
 bool Render::LoadTextureFromMemory(const void* data, size_t data_size, ID3D11ShaderResourceView** out_srv, int* out_width, int* out_height)
@@ -204,11 +210,8 @@ void Render::Loop()
     ImGui_ImplWin32_Init(Data::MainWindow);
     ImGui_ImplDX11_Init(Data::Device, Data::DeviceContext);
 
-    //Manager::InitDefault();
-    int my_image_width = 0;
-    int my_image_height = 0;
-    bool ret = LoadTextureFromFile("C:\\NikoBoot.png", &Data::Image, &my_image_width, &my_image_height);
-	IM_ASSERT(ret);
+    Manager::InitDefault();
+    
     while (!Global::ShouldExit)
     {
         SetWindowPos(Data::MainWindow, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
