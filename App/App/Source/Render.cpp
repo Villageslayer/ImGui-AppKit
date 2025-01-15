@@ -206,7 +206,7 @@ void Render::Loop()
 
     io.IniFilename = nullptr;
     io.Fonts->AddFontFromFileTTF(R"(C:\Windows\Fonts\segoeui.ttf)", 17);
-	Global::BigIcons30 = io.Fonts->AddFontFromFileTTF(R"(./ImGuiIcons.ttf)", 30);
+	//Global::BigIcons30 = io.Fonts->AddFontFromFileTTF(R"(./ImGuiIcons.ttf)", 30);
     ImGui_ImplWin32_Init(Data::MainWindow);
     ImGui_ImplDX11_Init(Data::Device, Data::DeviceContext);
 

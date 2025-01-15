@@ -33,7 +33,7 @@ void SideWindow::Render()
 
 			// Example Widgets
 			
-			ECHILD;
+			ImGui::EndChild();
 			ImGui::Separator();
 			ImGui::EndTabItem();
 
@@ -54,7 +54,7 @@ void SideWindow::Render()
 
 		ImGui::EndTabBar();
 	}
-	ECHILD;
+	ImGui::EndChild();
 	BCHILD("##example", ImVec2(400, 100), true);
 	ImGui::Text("This is an example text.");
 
@@ -73,7 +73,7 @@ void SideWindow::Render()
 		// Button action
 	}
 
-	ECHILD;
+	ImGui::EndChild();
 }
 
 

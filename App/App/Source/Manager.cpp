@@ -2,7 +2,7 @@
 
 void Manager::InitDefault()
 {
-    Data::CurrentWindow = new ChildWindow();
+    Data::CurrentWindow = new TestWindow();
    
 }
 

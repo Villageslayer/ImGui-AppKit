@@ -6,7 +6,7 @@ private:
 	int width = 600;
 	int height = 400;
 	char title[128] = "Test Window";
-	
+	// Helper functions
 	void setup();
 	// Helper functions
 	void tab1();

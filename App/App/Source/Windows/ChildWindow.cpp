@@ -1,13 +1,18 @@
 #include "../Global.h"
+#include "../Widgets/Widgets.h"
 #include <cstdlib>
 #include <filesystem>
-
+using namespace ImGui;
+using namespace Widgets::Deco;
 ChildWindow::ChildWindow() {
     title = "Child Window";
-    LoadImagesFromDirectory(R"(C:\r6operators-icons-2.10.0\High-resolution PNG\)");
+    LoadImagesFromDirectory(directoryPath+"Attack", AttackerIcons, AttackerFiles);
+    LoadImagesFromDirectory(directoryPath + "Defense", DefenderIcons, DefenderFiles);
+    LoadImagesFromDirectory(directoryPath + "Guns", Guns, GunsFiles);
+    Manager::SetNextSize(width, height);
 }
 
-void ChildWindow::LoadImagesFromDirectory(const std::string& directoryPath) {
+void ChildWindow::LoadImagesFromDirectory(const std::string& directoryPath, std::vector<ID3D11ShaderResourceView*>& Images, std::vector<std::string>& imageFiles) {
     namespace fs = std::filesystem;
 
     for (const auto& entry : fs::directory_iterator(directoryPath)) {
@@ -30,26 +35,86 @@ void ChildWindow::Setup() {
     Manager::SetNextTitle(title);
 }
 
+void ChildWindow::Picker(std::vector<ID3D11ShaderResourceView*> Images, std::vector<std::string> imageFiles,std::string Last) {
+    return;
+}
 void ChildWindow::Render() {
-    Manager::SetNextSize(width, height);
-
-    // Ensure the text buffer is large enough and null-terminated
-    text.resize(1024); // Adjust the size as needed
-	std::string text;
     
-	BCHILD("#Stuff",ImVec2(0,0));
-    for (size_t i = 0; i < Images.size(); ++i) {
-        if (ImGui::ImageButton((ImTextureID)(intptr_t)Images[i], ImVec2(64, 64))) {
-			// Handle the image click
-            text = "You clicked on " + imageFiles[i];
-            
-			
-        }
-        if (i % 5 != 0) {
-            ImGui::SameLine();
-        }
+
+    if (ImGui::Button("Side")) {
+        side = !side;
     }
-	ImGui::EndChild();
+    SAMELINE;
     ImGui::Text(text.c_str());
-    //ImGui::InputTextMultiline("##ChildWindow", &text[0], text.size(), ImVec2(width - 20, height - 40));
+    if (!side){
+        CHILD("#Attack", ISIZE(width / 3, 0), 
+        {
+            for (size_t i = 0; i < AttackerIcons.size(); ++i) {
+
+                if (ImGui::ImageButton((ImTextureID)(intptr_t)AttackerIcons[i], ImVec2(50, 50))) {
+                    // Handle the image click
+                    text = AttackerFiles[i];
+                    text.replace(0, directoryPath.length() + 7, " ");
+                    text.replace(text.length() - 4, 4, " ");
+
+                }
+                //tooltip(tooltipText.c_str());
+                if (i % 3 != 0) {
+                    ImGui::SameLine();
+                }
+
+            }
+		},BORDER);
+        SAMELINE;
+    }
+    else {
+        CHILD("#Defense", ISIZE(width / 3, 0),
+        {
+            for (size_t i = 0; i < DefenderIcons.size(); ++i) {
+                if (ImGui::ImageButton((ImTextureID)(intptr_t)DefenderIcons[i], ImVec2(50, 50))) {
+                    // Handle the image click
+                    text = DefenderFiles[i];
+                    text.replace(0, directoryPath.length() + 8, " ");
+                    text.replace(text.length() - 4, 4, " ");
+                }
+                if (i % 3 != 0) {
+                    ImGui::SameLine();
+                }
+            }
+        },BORDER);
+        
+        SAMELINE;
+    }
+    
+    CHILD("#Guns", ISIZE(0,0),
+    {
+        Text("Loadout Select");
+        ImVec2 pos = GetCursorPos();
+        ImGui::Image((ImTextureID)(intptr_t)Guns[loadout], ImVec2(290, 100));
+        SetCursorPos(ImVec2(pos.x,pos.y + 40));
+        if (ArrowButton("##left", ImGuiDir_Left)) {
+            loadout--;
+            if (loadout < 0) {
+                loadout = Guns.size() - 1;
+            }
+        }
+        SetCursorPos(IV2(pos.x + 275, pos.y + 40));
+
+
+        if (ArrowButton("##right", ImGuiDir_Right)) {
+            loadout++;
+            if (loadout >= Guns.size()) {
+                loadout = 0;
+            }
+        } 
+    },BORDER);
+
+    Footer();
+    
+
+
+    
+    
+    
+    
 }

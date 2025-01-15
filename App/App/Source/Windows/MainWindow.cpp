@@ -89,7 +89,7 @@ void menu(auto childWidth, auto itemSpacing) {
     Widgets::Deco::tooltip(Features::Misc::text);
     //Main Window 
     Manager::SetNextSize(800.0f, 400.0f);
-
+	ENDCHILD;
 
 }
 void MainWindow::Render()
@@ -107,7 +107,7 @@ void MainWindow::Render()
     Widgets::Nav::Buttons::Side(buttonWidth);
     SAMELINE;
     Widgets::Nav::Buttons::Login(buttonWidth);
-    ECHILD; //HEADER
+    ImGui::EndChild(); //HEADER
     // Body of the window
     BCHILD("##BODY", ImVec2((childWidth + itemSpacing * 2) * numChildren, 300), false, ImGuiWindowFlags_NoMove);
     //Left side of the window
@@ -138,7 +138,7 @@ void MainWindow::Render()
             // text if OFF
             off();
         }
-        ECHILD; //Aim
+        ImGui::EndChild(); //Aim
         break;
 
         // ESP Feature
@@ -175,14 +175,14 @@ void MainWindow::Render()
                 BCHILD("##BOXES", ImVec2(childWidth * 2 - 4 * itemSpacing, 50));
                 TXT("Style: 0:Outline 1:Filled 2:Corner");
                 ImGui::SliderInt("", &Features::ESP::Box::style, 0, 2);
-                ECHILD;
+                ImGui::EndChild();
             }
 
             if (Features::ESP::Skeleton::isActive) {
                 BCHILD("##Skelly", ImVec2(childWidth * 2 - 4 * itemSpacing, 50));
                 TXT("Spooky");
                 ImGui::SliderInt("Thickness", &Features::ESP::Skeleton::thickness, 1, 5);
-                ECHILD;
+                ImGui::EndChild();
             }
 
 
@@ -192,7 +192,7 @@ void MainWindow::Render()
                 ImGui::SliderInt(" ", &Features::ESP::Tracer::style, 0, 2);
                 TXT("Thickness");
                 ImGui::SliderInt("  ", &Features::ESP::Tracer::thickness, 1, 5);
-                ECHILD;
+                ImGui::EndChild();
             }
 
         }
@@ -200,7 +200,7 @@ void MainWindow::Render()
             // text if OFF 
             off();
         }
-        ECHILD; //ESP
+        ImGui::EndChild(); //ESP
         break;
 
 
@@ -228,17 +228,17 @@ void MainWindow::Render()
             }
             Widgets::Deco::tooltip("Y is horizontal even A thing?");
         }
-        ECHILD;
+        ImGui::EndChild();
         BCHILD("##Stuff", ImVec2(childWidth * 2 - 8 * itemSpacing, 40), true);
         TXT("STUFF");
-        ECHILD;
+        ImGui::EndChild();
 
 
-        ECHILD; //Misc
+        ImGui::EndChild(); //Misc
         break;
     }
-    ECHILD; //Content
-    ECHILD; //BODY
+    ImGui::EndChild(); //Content
+    ImGui::EndChild(); //BODY
     Widgets::Deco::Footer();
     //Footer    
 

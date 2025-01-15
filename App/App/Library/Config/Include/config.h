@@ -3,6 +3,7 @@
 #include "fileIO.h"
 #include <vector>
 #include <string>
+#define _CRT_SECURE_NO_WARNINGS
 
 struct string_setting_t
 {
